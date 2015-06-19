@@ -2,8 +2,8 @@
 
 var express = require('express');
 var bodyparser = require("body-parser");
-// var Adjective = require('./lib/adjectives');
-// var getRandomWord = require('./lib/getRandomWord')
+var Adjective = require('./lib/adjectives.js');
+// var getRandomWord = require('./lib/getRandomWord');
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -12,13 +12,13 @@ app.use(bodyparser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/app/'));
 
-var Adjective = function() {
-  this.weary = true;
-  this.vengeful = true;
-  this.sophisticated = true;
-  this.yellowish = true;
-  this.bogus = true;
- };
+// var Adjective = function() {
+//   this.weary = true;
+//   this.vengeful = true;
+//   this.sophisticated = true;
+//   this.yellowish = true;
+//   this.bogus = true;
+//  };
 
 var adjective = new Adjective();
 

@@ -7,16 +7,29 @@
 	</head>
 
 	<body>
+
+		<h2>Welcome to the band name generator!</h2>
+
 		<div>
 			<button id="randomStringCalc">Do Not Click The Button</button>
 		</div>
 
 		<p>
-			Your name is:
+			Your bands name is:
 			<span id ='adjective'></span>
 			<span id ='verb'></span>
 			<span id ='noun'></span>
 		</p>
+
+		<h3>Submit words!</h3>
+		<form id="submitWords">
+		    <label for="user-adjective">Give us an adjective:</label>
+		    <input type="text" name="adjective" id="user-adjective">
+		    <input type="submit" value="Submit Words">
+		 </form>
+
+		 <p id='adjectiveRes'></p>
+
 
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	 <script src="script.js"></script>

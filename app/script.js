@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('button').on('click', function () {
+  $('button').on('click', function() {
 
   	$.get("adjective", function(response){
   		var adjective = response.word;
@@ -34,4 +34,39 @@ $(document).ready(function() {
       });
     }
   });
+
+$('#submitNoun').on('submit', function(e) {
+      e.preventDefault();
+
+      var noun = $("input[name=noun").val();
+
+
+    var nounPost;
+
+    if(noun) {
+      nounPost = {word: noun};
+      $.post("noun", nounPost, function(response){
+        var nounRes = response.msg;
+        $("#nounRes").text(nounRes);
+      });
+    }
+  });
+
+$('#submitVerb').on('submit', function(e) {
+      e.preventDefault();
+
+      var verb = $("input[name=verb]").val();
+
+
+    var verbPost;
+
+    if(verb) {
+      verbPost = {word: verb};
+      $.post("verb", verbPost, function(response){
+        var verbRes = response.msg;
+        $("#verbRes").text(verbRes);
+      });
+    }
+  });
+
 });

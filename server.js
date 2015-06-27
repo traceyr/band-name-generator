@@ -3,7 +3,8 @@
 var express = require('express');
 var bodyparser = require("body-parser");
 var Adjective = require('./lib/adjectives.js');
-// var getRandomWord = require('./lib/getRandomWord');
+var Noun = require('.lib/noun.js');
+var getRandomWord = require('./lib/getRandomWord.js');
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -11,14 +12,6 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/app/'));
-
-// var Adjective = function() {
-//   this.weary = true;
-//   this.vengeful = true;
-//   this.sophisticated = true;
-//   this.yellowish = true;
-//   this.bogus = true;
-//  };
 
 var adjective = new Adjective();
 
@@ -29,27 +22,27 @@ this.beaten = true;
 this.hidden = true;
 this.meant = true;
 this.said = true;
-}
+};
 
 var verb = new Verb();
 
-var Noun = function(){
-	this.veil = true;
-	this.rose = true;
-	this.vein = true;
-	this.linen = true;
-	this.creature = true;
-	this.rain = true;
-	this.battleStar = true;
-}
+// var Noun = function(){
+// 	this.veil = true;
+// 	this.rose = true;
+// 	this.vein = true;
+// 	this.linen = true;
+// 	this.creature = true;
+// 	this.rain = true;
+// 	this.battleStar = true;
+// }
 
 var noun = new Noun();
 
-function getRandomWord(object) {
-  var propArray = Object.keys(object);
-  var randomProp = propArray[Math.floor(Math.random() * propArray.length)];
-  return {word: randomProp};
-};
+// function getRandomWord(object) {
+//   var propArray = Object.keys(object);
+//   var randomProp = propArray[Math.floor(Math.random() * propArray.length)];
+//   return {word: randomProp};
+// };
 
 //move postRandomWords to another file and create a var require
 
@@ -88,6 +81,16 @@ app.get('/noun', function(req, res) {
 
 app.post('/adjective', function(req, res) {
 	var word = postRandomWord(req.body.word, adjective);
+	res.json(word);
+});
+
+app.post('/noun', function(req, res) {
+	var word = postRandomWord(req.body.word, noun);
+	res.json(word);
+});
+
+app.post('/verb', function(req, res) {
+	var word = postRandomWord(req.body.word, verb);
 	res.json(word);
 });
 
